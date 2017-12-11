@@ -1,5 +1,5 @@
 {
-  "name": "cloud-functions-metrics",
+  "name": "cloud-functions-metrics-service",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",

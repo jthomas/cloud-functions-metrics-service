@@ -1,16 +1,10 @@
-
-
-
-
-# cloud-functions-metrics
-
-
+# cloud-functions-metrics-service
 
 ```javascript
 const metrics = require('openwhisk-metrics')
-const metrics_service = require('cloud-functions-metrics')
+const service = require('cloud-functions-metrics-service')
 
-metrics.service = metrics_service({  
+metrics.service = service({  
   host: 'metrics.ng.bluemix.net',
   scope: '...',
   api_key: '...'
@@ -27,9 +21,9 @@ module.exports.main = metrics(main)
 
 ```javascript
 const metrics = require('openwhisk-metrics')
-const metrics_service = require('cloud-functions-metrics')
+const service = require('cloud-functions-metrics-service')
 
-const service = metrics_service({  
+const client = service({  
   host: 'metrics.ng.bluemix.net',
   scope: '...',
   api_key: '...'
@@ -39,11 +33,11 @@ const log = metrics.service
 
 metrics.service = values => {
   log.save(values)
-  return service.save(values)
+  return client.save(values)
 }
 
 const main = params => {
-	return { message: "Hello World" }
+  return { message: "Hello World" }
 }
 
 module.exports.main = metrics(main)
