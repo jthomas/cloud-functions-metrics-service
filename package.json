@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "ibm-cloud-monitoring": "git+ssh://git@github.ibm.com:thomas6/ibm-cloud-monitoring.git"
+    "ibm-cloud-monitoring": "git+ssh://git@github.ibm.com:thomas6/ibm-cloud-monitoring.git",
+    "openwhisk": "^3.11.0"
   }
 }
