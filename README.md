@@ -1,20 +1,19 @@
 # cloud-functions-metrics-service
 
-This project uses IBM Cloud Monitoring to save metrics from IBM Cloud Functions.
+This project uses [IBM Cloud Monitoring](https://console.bluemix.net/catalog/services/monitoring) to save metrics from [IBM Cloud Functions](https://console.bluemix.net/openwhisk/).
 
-Metrics collected by the `openwhisk-metrics` library are forwarded into the IBM Cloud Monitoring service.
+Metrics collected by the [openwhisk-metrics](https://github.com/jthomas/openwhisk-metrics) library are forwarded into the external monitoring service.
 
 ## usage
 
-Metrics can be forwarded into IBM Cloud Monitoring in real-time or sent in batches using a background process.
+Metrics can be forwarded into IBM Cloud Monitoring in [real-time](#real-time-ingestion) or [sent in batches](#batch-ingestion) using a background process.
 
-Real-time ingestion has the advantage that metrics appear immediately in the monitoring dashboard. Metrics forwarded using the background process won't be available until the next background task execution.
-
-Real-time ingestion saves invocation metrics each time the action handler is called. This adds a (small) delay to each invocation, where the library calls the external metrics service. Using the background process to forward metrics does not add any delay to action invocations.
+- *Real-time ingestion ensures metrics appear immediately in the monitoring service.* Metrics forwarded using the batch ingestion won't be available until the next background task execution.
+- *Batch ingestion does not add any delay to action invocations.* Real-time ingestion saves invocation metrics each time the action handler is called. This adds a (small) delay to each invocation, where the library calls the external metrics service.
 
 ### real-time ingestion
 
-- Install OpenWhisk metrics and IBM Cloud Monitoring service libraries
+- Install [OpenWhisk metrics](https://www.npmjs.com/package/openwhisk-metrics) and [IBM Cloud Monitoring service](https://www.npmjs.com/package/cloud-functions-metrics-service) libraries
 
   ```
   $ npm install openwhisk-metrics cloud-functions-metrics-service
@@ -41,7 +40,7 @@ Real-time ingestion saves invocation metrics each time the action handler is cal
 
 *Configuration options for the `openwhisk-metrics` library are available in the [project repository](https://github.com/jthomas/openwhisk-metrics).*
 
-*Configuration options for the [IBM Cloud Monitoring service](https://console.bluemix.net/docs/services/cloud-monitoring/monitoring_ov.html#monitoring_ov) are available in the project repository.*
+*Configuration options for the [IBM Cloud Monitoring service](https://console.bluemix.net/docs/services/cloud-monitoring/monitoring_ov.html#monitoring_ov) are available in the [project repository](https://github.com/jthomas/ibm-cloud-monitoring).*
 
 Metrics forwarded using external real-time ingestion will not be logged to the console. If you want to enable this for debugging or testing, use this code snippet.
 
@@ -60,7 +59,7 @@ metrics.service = values => {
 }
 ```
 
-### background collection
+### batch ingestion
 
 #### set up metric collectors
 
@@ -83,8 +82,8 @@ All actions you want to collect metrics for should use the library as above. Use
 - Download project repository
 
   ```
-  git clone jthomas/.....
-  cd blah
+  $ git clone https://github.com/jthomas/cloud-functions-metrics-service
+  $ cd cloud-functions-metrics-service
   ```
 
 
@@ -99,7 +98,7 @@ All actions you want to collect metrics for should use the library as above. Use
 
   ```json
   {
-    "actions": ["action_names_to_monitor", ...]
+    "actions": ["action_names_to_monitor"]
     "service": {
       "host": "metrics.ng.bluemix.net",
   	"scope": "...",
@@ -108,7 +107,7 @@ All actions you want to collect metrics for should use the library as above. Use
   }
   ```
 
-  *Configuration options for the [IBM Cloud Monitoring service](https://console.bluemix.net/docs/services/cloud-monitoring/monitoring_ov.html#monitoring_ov) are available in the project repository.*
+  *Configuration options for the [IBM Cloud Monitoring service](https://console.bluemix.net/docs/services/cloud-monitoring/monitoring_ov.html#monitoring_ov) are available in the [project repository](https://github.com/jthomas/ibm-cloud-monitoring).*
 
 - Create new OpenWhisk action from deployment package and configuration file.
 
