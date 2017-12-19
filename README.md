@@ -36,7 +36,7 @@ Real-time ingestion saves invocation metrics each time the action handler is cal
   	return { message: "Hello World" }
   }
 
-  module.exports.main = metrics(main)
+  exports.main = metrics(main)
   ```
 
 *Configuration options for the `openwhisk-metrics` library are available in the [project repository](https://github.com/jthomas/openwhisk-metrics).*
@@ -62,10 +62,6 @@ metrics.service = values => {
 
 ### background collection
 
-NEED TO RENAME FILES TO USE MAIN
-
-
-
 #### set up metric collectors
 
 - Set up action handlers with `openwhisk-metrics`
@@ -83,6 +79,14 @@ NEED TO RENAME FILES TO USE MAIN
 All actions you want to collect metrics for should use the library as above. Use the action names in the configuration below for the background task.
 
 #### create metric forwarder action
+
+- Download project repository
+
+  ```
+  git clone jthomas/.....
+  cd blah
+  ```
+
 
 - Create action deployment package.
 
