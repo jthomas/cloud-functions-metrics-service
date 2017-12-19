@@ -1,0 +1,8 @@
+{
+  "actions": ["<???>"],
+  "service": {
+    "host": "metrics.<???>.bluemix.net",
+    "scope": "s-<???>",
+    "api_key": "<???>"
+  }
+}
