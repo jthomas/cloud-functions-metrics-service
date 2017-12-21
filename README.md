@@ -32,7 +32,7 @@ Metrics can be forwarded into IBM Cloud Monitoring in [real-time](#real-time-ing
   })
 
   const main = params => {
-  	return { message: "Hello World" }
+    return { message: "Hello World" }
   }
 
   exports.main = metrics(main)
@@ -98,10 +98,10 @@ All actions you want to collect metrics for should use the library as above. Use
 
   ```json
   {
-    "actions": ["action_names_to_monitor"]
+    "actions": ["action_names_to_monitor"],
     "service": {
       "host": "metrics.ng.bluemix.net",
-  	"scope": "...",
+      "scope": "...",
       "api_key": "..."          
     }
   }
@@ -128,8 +128,3 @@ All actions you want to collect metrics for should use the library as above. Use
   ```
   $ wsk rule create forward-metrics-on-interval interval metric-forwarder
   ```
-
-  ​
-
-
-
