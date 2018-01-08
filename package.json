@@ -17,10 +17,14 @@
   },
   "homepage": "https://github.com/jthomas/cloud-functions-metrics-service#readme",
   "dependencies": {
-    "ibm-cloud-monitoring": "git+ssh://git@github.ibm.com:thomas6/ibm-cloud-monitoring.git",
+    "ibm-cloud-monitoring": "^0.1.0",
     "openwhisk": "^3.11.0"
   },
   "keywords": [
-    "openwhisk", "ibm cloud", "metrics", "serverless", "ibm cloud functions"
+    "openwhisk",
+    "ibm cloud",
+    "metrics",
+    "serverless",
+    "ibm cloud functions"
   ]
 }
