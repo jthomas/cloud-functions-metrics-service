@@ -1,6 +1,6 @@
 {
   "name": "cloud-functions-metrics-service",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Node.js library to save serverless metrics from openwhisk to IBM Cloud Monitoring Service",
   "main": "index.js",
   "engines": {
